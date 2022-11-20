@@ -20,7 +20,7 @@ class HomeScreen extends State<HomePage> {
     if (myBox_.get("TASKLIST") == null) {
       taskData.makeDataFirstOpen();
     } else {
-      taskData.updateData();
+      taskData.uploadData();
     }
     super.initState();
   }
