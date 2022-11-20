@@ -44,6 +44,12 @@ class HomeScreen extends State<HomePage> {
     );
   }
 
+  void deleteTask_(int index) {
+    setState(() {
+      taskList.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,6 +65,7 @@ class HomeScreen extends State<HomePage> {
             taskName: taskList[index][0],
             completedTask: taskList[index][1],
             onChanged: (value) => checkChanged(value, index),
+            deleteTask: (context) => deleteTask_(index),
           );
         },
       ),
