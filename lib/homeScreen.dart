@@ -97,7 +97,7 @@ class HomeScreen extends State<HomePage> {
           FloatingActionButton(
               onPressed: createTask,
               backgroundColor: Colors.white,
-              child: Icon(
+              child: const Icon(
                   Icons.add,
                   color: Color(0xFF81D4FA),
                   size: 30.0,
