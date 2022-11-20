@@ -27,7 +27,6 @@ class Individual extends StatelessWidget {
               onPressed: deleteTask,
               icon: Icons.delete_forever,
               backgroundColor: Colors.red,
-            ),
           ],
         ),
         child: Container(
@@ -36,16 +35,22 @@ class Individual extends StatelessWidget {
           child: Row(
             children: [
               Checkbox(
+                checkColor: const Color(0xFF78281D),
                 value: completedTask,
                 onChanged: onChanged,
-                activeColor: Colors.amber,
+                activeColor: Colors.white,
               ),
               Text(
                 taskName,
                 style: TextStyle(
-                    decoration: completedTask
-                        ? TextDecoration.lineThrough
-                        : TextDecoration.none),
+                  color: const Color(0xFFFFFFFF),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0,
+                  letterSpacing: 2.0,
+                  fontFamily: 'Lato',
+                  decoration: completedTask
+                      ? TextDecoration.lineThrough
+                      : TextDecoration.none)
               ),
             ],
           ),
