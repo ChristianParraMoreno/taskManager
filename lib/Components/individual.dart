@@ -36,7 +36,7 @@ class Individual extends StatelessWidget {
           child: Row(
             children: [
               Checkbox(
-                checkColor: const Color(0xFF78281D),
+                checkColor: const Color(0xFF81D4FA),
                 value: completedTask,
                 onChanged: onChanged,
                 activeColor: Colors.white,
