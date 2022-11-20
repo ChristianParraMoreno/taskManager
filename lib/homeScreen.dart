@@ -71,7 +71,8 @@ class HomeScreen extends State<HomePage> {
         title: const Text(
           'Task List',
           style: TextStyle(
-            fontSize: 20.0,
+            color: Color(0xFF81D4FA),
+            fontSize: 30.0,
             fontWeight: FontWeight.bold,
             letterSpacing: 2.0,
             fontFamily: 'Lato',
@@ -79,7 +80,7 @@ class HomeScreen extends State<HomePage> {
         ),
         elevation: 0,
         centerTitle: true,
-        backgroundColor: const Color(0xFF312f30),
+        backgroundColor: Colors.white,
       ),
       body: ListView.builder(
         itemCount: taskData.taskList.length,
@@ -92,10 +93,16 @@ class HomeScreen extends State<HomePage> {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(
-          onPressed: createTask,
-          backgroundColor: const Color(0xFF78281D),
-          child: Icon(Icons.add)),
+      floatingActionButton:
+          FloatingActionButton(
+              onPressed: createTask,
+              backgroundColor: Colors.white,
+              child: const Icon(
+                  Icons.add,
+                  color: Color(0xFF81D4FA),
+                  size: 30.0,
+              )
+          ),
     );
   }
 }
