@@ -17,7 +17,7 @@ class DialogAnswer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.blue,
+      backgroundColor: const Color(0xFFFAFDD6),
       content: Container(
         height: 100,
         child: Column(children: [

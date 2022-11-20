@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: HomePage(),
-      theme: ThemeData(primarySwatch: Colors.lightBlue),
+      theme: ThemeData(scaffoldBackgroundColor: const Color(0xFFE6BA95)),
     );
   }
 }
