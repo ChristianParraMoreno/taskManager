@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/material/colors.dart';
+import 'package:flutter_application_1/database.dart';
 import '../Components/individual.dart';
 import '../Components/dialog.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,25 +12,35 @@ class HomePage extends StatefulWidget {
 }
 
 class HomeScreen extends State<HomePage> {
-  final controller_ = TextEditingController();
+  final myBox_ = Hive.box('myBox');
+  TaskDataBase taskData = TaskDataBase();
 
-  List taskList = [
-    ["tutorial", false],
-    ["HW5", false],
-  ];
+  @override
+  void initState() {
+    if (myBox_.get("TASKLIST") == null) {
+      taskData.makeDataFirstOpen();
+    } else {
+      taskData.updateData();
+    }
+    super.initState();
+  }
+
+  final controller_ = TextEditingController();
 
   void checkChanged(bool? value, int index) {
     setState(() {
-      taskList[index][1] = !taskList[index][1];
+      taskData.taskList[index][1] = !taskData.taskList[index][1];
     });
+    taskData.updateData();
   }
 
   void saveTask() {
     setState(() {
-      taskList.add([controller_.text, false]);
+      taskData.taskList.add([controller_.text, false]);
       controller_.clear();
     });
     Navigator.of(context).pop();
+    taskData.updateData();
   }
 
   void createTask() {
@@ -47,8 +58,9 @@ class HomeScreen extends State<HomePage> {
 
   void deleteTask_(int index) {
     setState(() {
-      taskList.removeAt(index);
+      taskData.taskList.removeAt(index);
     });
+    taskData.updateData();
   }
 
   @override
@@ -71,11 +83,11 @@ class HomeScreen extends State<HomePage> {
         backgroundColor: Colors.white,
       ),
       body: ListView.builder(
-        itemCount: taskList.length,
+        itemCount: taskData.taskList.length,
         itemBuilder: (context, index) {
           return Individual(
-            taskName: taskList[index][0],
-            completedTask: taskList[index][1],
+            taskName: taskData.taskList[index][0],
+            completedTask: taskData.taskList[index][1],
             onChanged: (value) => checkChanged(value, index),
             deleteTask: (context) => deleteTask_(index),
           );
