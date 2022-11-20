@@ -27,6 +27,7 @@ class Individual extends StatelessWidget {
               onPressed: deleteTask,
               icon: Icons.delete_forever,
               backgroundColor: Colors.red,
+            ),
           ],
         ),
         child: Container(
