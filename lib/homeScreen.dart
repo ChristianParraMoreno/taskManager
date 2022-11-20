@@ -10,6 +10,8 @@ class HomePage extends StatefulWidget {
 }
 
 class HomeScreen extends State<HomePage> {
+  final controller_ = TextEditingController();
+
   List taskList = [
     ["tutorial", false],
     ["HW5", false],
@@ -21,11 +23,23 @@ class HomeScreen extends State<HomePage> {
     });
   }
 
+  void saveTask() {
+    setState(() {
+      taskList.add([controller_.text, false]);
+      controller_.clear();
+    });
+    Navigator.of(context).pop();
+  }
+
   void createTask() {
     showDialog(
       context: context,
       builder: (context) {
-        return DialogAnswer();
+        return DialogAnswer(
+          controller: controller_,
+          onSave: saveTask,
+          onCancel: Navigator.of(context).pop,
+        );
       },
     );
   }

@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Components/myButton.dart';
 
 class DialogAnswer extends StatelessWidget {
-  const DialogAnswer({super.key});
+  final controller;
+
+  VoidCallback onSave;
+  VoidCallback onCancel;
+
+  DialogAnswer({
+    super.key,
+    required this.controller,
+    required this.onSave,
+    required this.onCancel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +21,16 @@ class DialogAnswer extends StatelessWidget {
       content: Container(
         height: 100,
         child: Column(children: [
-          TextField(),
+          TextField(
+            controller: controller,
+            decoration: InputDecoration(hintText: "Write a task"),
+          ),
+          Row(
+            children: [
+              MyButton(text: "save", onPressed: onSave),
+              MyButton(text: "cancel", onPressed: onCancel)
+            ],
+          )
         ]),
       ),
     );
