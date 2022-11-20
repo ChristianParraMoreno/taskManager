@@ -49,8 +49,18 @@ class HomeScreen extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.lightBlue[200],
       appBar: AppBar(
-        title: const Text('Remainding Tasks'),
+        title: const Text(
+          'Task List',
+          style: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 2.0,
+            fontFamily: 'Lato',
+          ),
+        ),
         elevation: 0,
+        centerTitle: true,
+        backgroundColor: const Color(0xFF312f30),
       ),
       body: ListView.builder(
         itemCount: taskList.length,
@@ -63,7 +73,10 @@ class HomeScreen extends State<HomePage> {
         },
       ),
       floatingActionButton:
-          FloatingActionButton(onPressed: createTask, child: Icon(Icons.add)),
+          FloatingActionButton(
+              onPressed: createTask,
+              backgroundColor: const Color(0xFF78281D),
+              child: Icon(Icons.add)),
     );
   }
 }
